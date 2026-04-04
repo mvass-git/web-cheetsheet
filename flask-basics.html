@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flask-шпаргалка</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="subpage-header">
+    <nav class="main-nav">
+      <a href="index.html">Головна</a>
+      <a href="html-tags.html">HTML</a>
+      <a href="css-selectors.html">CSS</a>
+      <a href="connect-css.html">Підключення CSS</a>
+      <a href="flask-basics.html">Flask</a>
+    </nav>
+    <p class="eyebrow">Шпаргалка 4</p>
+    <h1>Flask: перші кроки</h1>
+    <p class="lead">
+      Короткий довідник по Flask: як створити застосунок,
+      запустити сервер, зробити маршрути і повернути сторінку в браузер.
+    </p>
+  </header>
+
+  <main class="page">
+    <section class="cheat-sheet single-column wide-sheet">
+      <article class="cheat-card topic-nav">
+        <h2>Зміст</h2>
+        <div class="topic-links">
+          <a href="#what-is-flask">Що таке Flask</a>
+          <a href="#create-app">Створення застосунку</a>
+          <a href="#run-app">Запуск</a>
+          <a href="#routes">Маршрути</a>
+          <a href="#returns">Що може повертати маршрут</a>
+          <a href="#multi-pages">Кілька сторінок</a>
+          <a href="#html-response">Повернення HTML</a>
+          <a href="#templates">Шаблони</a>
+          <a href="#common-errors">Часті помилки</a>
+          <a href="#full-example">Повний приклад</a>
+        </div>
+      </article>
+
+      <article class="cheat-card" id="what-is-flask">
+        <h2>Що таке Flask</h2>
+        <p>
+          Flask це Python-фреймворк для створення веб-застосунків. Простими словами:
+          це програма, яка запускає веб-сервер і показує сторінки в браузері.
+        </p>
+        <ul class="tip-list">
+          <li>HTML створює сторінки.</li>
+          <li>CSS оформлює сторінки.</li>
+          <li>Flask віддає ці сторінки браузеру.</li>
+        </ul>
+      </article>
+
+      <article class="cheat-card" id="create-app">
+        <h2>Створення застосунку</h2>
+        <div class="code-block">
+          <pre><code>from flask import Flask
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return "Привіт, Flask!"
+
+if __name__ == "__main__":
+    app.run(debug=True)</code></pre>
+        </div>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Частина</th>
+              <th>Для чого</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>from flask import Flask</code></td>
+              <td>Імпорт класу Flask.</td>
+            </tr>
+            <tr>
+              <td><code>app = Flask(__name__)</code></td>
+              <td>Створення застосунку.</td>
+            </tr>
+            <tr>
+              <td><code>@app.route("/")</code></td>
+              <td>Створення маршруту для головної сторінки.</td>
+            </tr>
+            <tr>
+              <td><code>return ...</code></td>
+              <td>Те, що Flask відправить у браузер.</td>
+            </tr>
+            <tr>
+              <td><code>app.run(debug=True)</code></td>
+              <td>Запуск сервера.</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="cheat-card" id="run-app">
+        <h2>Як запустити Flask-застосунок</h2>
+        <p>Якщо код збережено у файлі <code>app.py</code>, його можна запустити так:</p>
+        <div class="code-block">
+          <pre><code>python app.py</code></pre>
+        </div>
+        <p>
+          Після запуску у терміналі зазвичай з'явиться адреса на кшталт
+          <code>http://127.0.0.1:5000</code>. Її треба відкрити в браузері.
+        </p>
+      </article>
+
+      <article class="cheat-card" id="routes">
+        <h2>Маршрути</h2>
+        <p>
+          Маршрут це адреса сторінки на сайті. Наприклад:
+        </p>
+        <ul class="tip-list">
+          <li><code>/</code> це головна сторінка</li>
+          <li><code>/about</code> це сторінка "Про нас"</li>
+          <li><code>/contacts</code> це сторінка "Контакти"</li>
+        </ul>
+        <div class="code-block">
+          <pre><code>@app.route("/")
+def home():
+    return "Головна сторінка"
+
+@app.route("/about")
+def about():
+    return "Сторінка про нас"
+
+@app.route("/contacts")
+def contacts():
+    return "Наші контакти"</code></pre>
+        </div>
+      </article>
+
+      <article class="cheat-card" id="returns">
+        <h2>Що може повертати маршрут</h2>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Що повертаємо</th>
+              <th>Приклад</th>
+              <th>Що побачить користувач</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Звичайний текст</td>
+              <td><code>return "Привіт!"</code></td>
+              <td>У браузері з'явиться текст.</td>
+            </tr>
+            <tr>
+              <td>HTML-рядок</td>
+              <td><code>return "&lt;h1&gt;Привіт!&lt;/h1&gt;"</code></td>
+              <td>У браузері з'явиться HTML-сторінка.</td>
+            </tr>
+            <tr>
+              <td>Шаблон</td>
+              <td><code>return render_template("index.html")</code></td>
+              <td>Flask відкриє HTML-файл із папки шаблонів.</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="cheat-card" id="multi-pages">
+        <h2>Як зробити кілька сторінок</h2>
+        <div class="code-block">
+          <pre><code>@app.route("/")
+def home():
+    return "&lt;h1&gt;Головна&lt;/h1&gt;&lt;a href='/about'&gt;Про нас&lt;/a&gt;"
+
+@app.route("/about")
+def about():
+    return "&lt;h1&gt;Про нас&lt;/h1&gt;&lt;a href='/'&gt;На головну&lt;/a&gt;"</code></pre>
+        </div>
+        <p>
+          Так можна зробити переходи між сторінками навіть без складної структури проєкту.
+        </p>
+      </article>
+
+      <article class="cheat-card" id="html-response">
+        <h2>Повернення HTML з маршруту</h2>
+        <p>Flask може повернути HTML прямо зі звичайного Python-рядка:</p>
+        <div class="code-block">
+          <pre><code>@app.route("/")
+def home():
+    return """
+    &lt;h1&gt;Мій сайт&lt;/h1&gt;
+    &lt;p&gt;Я вивчаю Flask.&lt;/p&gt;
+    &lt;a href="/about"&gt;Про мене&lt;/a&gt;
+    """</code></pre>
+        </div>
+        <p>
+          Це зручно для дуже маленьких прикладів. Для справжніх сторінок краще використовувати окремі HTML-файли.
+        </p>
+      </article>
+
+      <article class="cheat-card" id="templates">
+        <h2>Шаблони: окремі HTML-файли</h2>
+        <p>
+          У Flask часто створюють папку <code>templates</code> і кладуть туди HTML-файли.
+        </p>
+        <div class="code-block">
+          <pre><code>from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return render_template("index.html")
+
+@app.route("/about")
+def about():
+    return render_template("about.html")</code></pre>
+        </div>
+        <p>
+          Тоді HTML лежить окремо, і код Python стає чистішим.
+        </p>
+      </article>
+
+      <article class="cheat-card note-card" id="common-errors">
+        <h2>Часті помилки</h2>
+        <ul class="tip-list">
+          <li>Забули імпортувати <code>Flask</code> або <code>render_template</code>.</li>
+          <li>Написали маршрут, але не поставили <code>@app.route(...)</code>.</li>
+          <li>Дві функції мають однакову назву.</li>
+          <li>У <code>return</code> повертається неправильний текст або зламаний HTML.</li>
+          <li>Запустили не той файл або не зберегли зміни перед запуском.</li>
+          <li>HTML-файл для <code>render_template</code> лежить не в папці <code>templates</code>.</li>
+        </ul>
+      </article>
+
+      <article class="cheat-card" id="full-example">
+        <h2>Повний базовий приклад</h2>
+        <div class="code-block">
+          <pre><code>from flask import Flask
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return """
+    &lt;h1&gt;Ласкаво просимо!&lt;/h1&gt;
+    &lt;p&gt;Це головна сторінка.&lt;/p&gt;
+    &lt;a href="/about"&gt;Про нас&lt;/a&gt;
+    """
+
+@app.route("/about")
+def about():
+    return """
+    &lt;h1&gt;Про нас&lt;/h1&gt;
+    &lt;p&gt;Ми вивчаємо Python Flask.&lt;/p&gt;
+    &lt;a href="/"&gt;На головну&lt;/a&gt;
+    """
+
+if __name__ == "__main__":
+    app.run(debug=True)</code></pre>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
