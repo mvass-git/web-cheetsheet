@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML-шпаргалка</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="subpage-header">
+    <nav class="main-nav">
+      <a href="index.html">Головна</a>
+      <a href="html-tags.html">HTML</a>
+      <a href="css-selectors.html">CSS</a>
+      <a href="connect-css.html">Підключення CSS</a>
+    </nav>
+    <p class="eyebrow">Шпаргалка 1</p>
+    <h1>HTML: велика шпаргалка</h1>
+    <p class="lead">
+      Довідник по основних HTML-тегах, до якого можна повертатися протягом усього курсу.
+      Тут є каркас сторінки, текстові елементи, списки, зображення, таблиці, форми та корисні правила.
+    </p>
+  </header>
+
+  <main class="page">
+    <section class="cheat-sheet single-column wide-sheet">
+      <article class="cheat-card topic-nav">
+        <h2>Зміст</h2>
+        <div class="topic-links">
+          <a href="#page-structure">Каркас сторінки</a>
+          <a href="#head-tags">Теги в head</a>
+          <a href="#text-tags">Текст і заголовки</a>
+          <a href="#links-media">Посилання і медіа</a>
+          <a href="#lists">Списки</a>
+          <a href="#containers">Блоки і структура</a>
+          <a href="#tables">Таблиці</a>
+          <a href="#forms">Форми</a>
+          <a href="#attributes">Корисні атрибути</a>
+          <a href="#rules">Правила HTML</a>
+          <a href="#full-example">Повний приклад</a>
+        </div>
+      </article>
+
+      <article class="cheat-card" id="page-structure">
+        <h2>Каркас сторінки</h2>
+        <div class="code-block">
+          <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="uk"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Моя сторінка&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  Тут вміст сторінки
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Тег</th>
+              <th>Що робить</th>
+              <th>Нотатка</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>&lt;!DOCTYPE html&gt;</code></td>
+              <td>Каже браузеру, що це HTML5-документ.</td>
+              <td>Пишеться на самому початку файла.</td>
+            </tr>
+            <tr>
+              <td><code>&lt;html&gt;</code></td>
+              <td>Огортає всю сторінку.</td>
+              <td>Може мати атрибут <code>lang="uk"</code>.</td>
+            </tr>
+            <tr>
+              <td><code>&lt;head&gt;</code></td>
+              <td>Містить службову інформацію.</td>
+              <td>Тут не показується основний вміст сторінки.</td>
+            </tr>
+            <tr>
+              <td><code>&lt;body&gt;</code></td>
+              <td>Містить усе, що бачить користувач.</td>
+              <td>Заголовки, текст, картинки, кнопки, списки.</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="cheat-card" id="head-tags">
+        <h2>Теги в <code>head</code></h2>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Тег</th>
+              <th>Для чого</th>
+              <th>Приклад</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>&lt;title&gt;</code></td>
+              <td>Назва вкладки в браузері.</td>
+              <td><code>&lt;title&gt;Мій сайт&lt;/title&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>&lt;meta charset="UTF-8"&gt;</code></td>
+              <td>Правильне відображення українських літер.</td>
+              <td><code>&lt;meta charset="UTF-8"&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>&lt;meta name="viewport"&gt;</code></td>
+              <td>Щоб сайт нормально виглядав на телефоні.</td>
+              <td><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>&lt;link&gt;</code></td>
+              <td>Підключення CSS-файла.</td>
+              <td><code>&lt;link rel="stylesheet" href="styles.css"&gt;</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="cheat-card" id="text-tags">
+        <h2>Текст і заголовки</h2>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Тег</th>
+              <th>Для чого</th>
+              <th>Приклад</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>&lt;h1&gt;</code> - <code>&lt;h6&gt;</code></td>
+              <td>Заголовки різного рівня.</td>
+              <td><code>&lt;h1&gt;Головна тема&lt;/h1&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>&lt;p&gt;</code></td>
+              <td>Абзац звичайного тексту.</td>
+              <td><code>&lt;p&gt;Це абзац.&lt;/p&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>&lt;br&gt;</code></td>
+              <td>Перенос рядка.</td>
+              <td><code>Привіт&lt;br&gt;Світ</code></td>
+            </tr>
+            <tr>
+              <td><code>&lt;hr&gt;</code></td>
+              <td>Горизонтальна лінія, розділювач.</td>
+              <td><code>&lt;hr&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>&lt;strong&gt;</code></td>
+              <td>Важливий текст, зазвичай жирний.</td>
+              <td><code>&lt;strong&gt;Увага&lt;/strong&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>&lt;em&gt;</code></td>
+              <td>Наголос, зазвичай курсив.</td>
+              <td><code>&lt;em&gt;Дуже цікаво&lt;/em&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>&lt;span&gt;</code></td>
+              <td>Маленький фрагмент тексту всередині рядка.</td>
+              <td><code>&lt;span&gt;слово&lt;/span&gt;</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="cheat-card" id="links-media">
+        <h2>Посилання і медіа</h2>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Тег</th>
+              <th>Для чого</th>
+              <th>Приклад</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>&lt;a&gt;</code></td>
+              <td>Посилання на іншу сторінку або сайт.</td>
+              <td><code>&lt;a href="about.html"&gt;Про мене&lt;/a&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>&lt;img&gt;</code></td>
+              <td>Зображення.</td>
+              <td><code>&lt;img src="cat.jpg" alt="Кіт"&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>&lt;figure&gt;</code></td>
+              <td>Блок для картинки або схеми.</td>
+              <td><code>&lt;figure&gt;...&lt;/figure&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>&lt;figcaption&gt;</code></td>
+              <td>Підпис до картинки всередині <code>figure</code>.</td>
+              <td><code>&lt;figcaption&gt;Мій кіт&lt;/figcaption&gt;</code></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="code-block">
+          <pre><code>&lt;a href="contacts.html"&gt;Контакти&lt;/a&gt;
+
+&lt;figure&gt;
+  &lt;img src="robot.png" alt="Робот"&gt;
+  &lt;figcaption&gt;Малюнок робота&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+        </div>
+      </article>
+
+      <article class="cheat-card" id="lists">
+        <h2>Списки</h2>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Тег</th>
+              <th>Для чого</th>
+              <th>Приклад</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>&lt;ul&gt;</code></td>
+              <td>Ненумерований список.</td>
+              <td><code>&lt;ul&gt;...&lt;/ul&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>&lt;ol&gt;</code></td>
+              <td>Нумерований список.</td>
+              <td><code>&lt;ol&gt;...&lt;/ol&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>&lt;li&gt;</code></td>
+              <td>Окремий пункт списку.</td>
+              <td><code>&lt;li&gt;Піца&lt;/li&gt;</code></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="code-block">
+          <pre><code>&lt;h3&gt;Мої хобі&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Малювання&lt;/li&gt;
+  &lt;li&gt;Ігри&lt;/li&gt;
+  &lt;li&gt;Програмування&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3&gt;Кроки&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;Відкрити файл&lt;/li&gt;
+  &lt;li&gt;Написати код&lt;/li&gt;
+  &lt;li&gt;Зберегти&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+        </div>
+      </article>
+
+      <article class="cheat-card" id="containers">
+        <h2>Блоки і структура сторінки</h2>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Тег</th>
+              <th>Для чого</th>
+              <th>Коли використовувати</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>&lt;div&gt;</code></td>
+              <td>Універсальний блок-контейнер.</td>
+              <td>Коли треба просто об'єднати елементи в один блок.</td>
+            </tr>
+            <tr>
+              <td><code>&lt;header&gt;</code></td>
+              <td>Верхня частина сторінки або секції.</td>
+              <td>Назва сайту, меню, вступ.</td>
+            </tr>
+            <tr>
+              <td><code>&lt;nav&gt;</code></td>
+              <td>Блок навігації.</td>
+              <td>Посилання на інші сторінки.</td>
+            </tr>
+            <tr>
+              <td><code>&lt;main&gt;</code></td>
+              <td>Головний вміст сторінки.</td>
+              <td>Основна частина документа.</td>
+            </tr>
+            <tr>
+              <td><code>&lt;section&gt;</code></td>
+              <td>Окремий розділ сторінки.</td>
+              <td>Коли є тема і заголовок.</td>
+            </tr>
+            <tr>
+              <td><code>&lt;article&gt;</code></td>
+              <td>Самостійний матеріал або картка.</td>
+              <td>Новина, пост, стаття, окремий блок.</td>
+            </tr>
+            <tr>
+              <td><code>&lt;footer&gt;</code></td>
+              <td>Нижня частина сторінки.</td>
+              <td>Автор, контакти, копірайт.</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="cheat-card" id="tables">
+        <h2>Таблиці</h2>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Тег</th>
+              <th>Для чого</th>
+              <th>Приклад</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>&lt;table&gt;</code></td>
+              <td>Уся таблиця.</td>
+              <td><code>&lt;table&gt;...&lt;/table&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>&lt;tr&gt;</code></td>
+              <td>Рядок таблиці.</td>
+              <td><code>&lt;tr&gt;...&lt;/tr&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>&lt;th&gt;</code></td>
+              <td>Заголовок стовпця.</td>
+              <td><code>&lt;th&gt;Ім'я&lt;/th&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>&lt;td&gt;</code></td>
+              <td>Звичайна клітинка.</td>
+              <td><code>&lt;td&gt;Оля&lt;/td&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code></td>
+              <td>Частини таблиці.</td>
+              <td>Допомагають краще організувати код.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="code-block">
+          <pre><code>&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Ім'я&lt;/th&gt;
+      &lt;th&gt;Улюблений колір&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Марко&lt;/td&gt;
+      &lt;td&gt;Синій&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+        </div>
+      </article>
+
+      <article class="cheat-card" id="forms">
+        <h2>Форми</h2>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Тег</th>
+              <th>Для чого</th>
+              <th>Приклад</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>&lt;form&gt;</code></td>
+              <td>Огортає всю форму.</td>
+              <td><code>&lt;form&gt;...&lt;/form&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>&lt;label&gt;</code></td>
+              <td>Підпис до поля.</td>
+              <td><code>&lt;label for="name"&gt;Ім'я&lt;/label&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>&lt;input&gt;</code></td>
+              <td>Поле введення.</td>
+              <td><code>&lt;input type="text" id="name"&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>&lt;textarea&gt;</code></td>
+              <td>Поле для довшого тексту.</td>
+              <td><code>&lt;textarea&gt;&lt;/textarea&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>&lt;button&gt;</code></td>
+              <td>Кнопка.</td>
+              <td><code>&lt;button&gt;Надіслати&lt;/button&gt;</code></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="code-block">
+          <pre><code>&lt;form&gt;
+  &lt;label for="name"&gt;Твоє ім'я&lt;/label&gt;
+  &lt;input type="text" id="name" name="name"&gt;
+
+  &lt;label for="message"&gt;Повідомлення&lt;/label&gt;
+  &lt;textarea id="message" name="message"&gt;&lt;/textarea&gt;
+
+  &lt;button type="submit"&gt;Надіслати&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        </div>
+      </article>
+
+      <article class="cheat-card" id="attributes">
+        <h2>Корисні атрибути</h2>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Атрибут</th>
+              <th>Для чого</th>
+              <th>Приклад</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>href</code></td>
+              <td>Адреса посилання.</td>
+              <td><code>&lt;a href="about.html"&gt;Про мене&lt;/a&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>src</code></td>
+              <td>Шлях до картинки або файла.</td>
+              <td><code>&lt;img src="cat.png" alt="Кіт"&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>alt</code></td>
+              <td>Текстовий опис картинки.</td>
+              <td><code>&lt;img src="cat.png" alt="Кіт у капелюсі"&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>class</code></td>
+              <td>Ім'я класу для CSS.</td>
+              <td><code>&lt;div class="card"&gt;&lt;/div&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>id</code></td>
+              <td>Унікальне ім'я елемента.</td>
+              <td><code>&lt;h1 id="title"&gt;Привіт&lt;/h1&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>type</code></td>
+              <td>Тип поля або кнопки.</td>
+              <td><code>&lt;input type="email"&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>name</code></td>
+              <td>Ім'я поля у формі.</td>
+              <td><code>&lt;input name="user_name"&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>placeholder</code></td>
+              <td>Підказка всередині поля.</td>
+              <td><code>&lt;input placeholder="Введи ім'я"&gt;</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="cheat-card note-card" id="rules">
+        <h2>Правила HTML, які корисно пам'ятати</h2>
+        <ul class="tip-list">
+          <li>Більшість тегів мають відкривальний і закривальний запис: <code>&lt;p&gt;...&lt;/p&gt;</code>.</li>
+          <li>Деякі теги не мають закривальної частини: <code>&lt;img&gt;</code>, <code>&lt;br&gt;</code>, <code>&lt;hr&gt;</code>, <code>&lt;meta&gt;</code>, <code>&lt;link&gt;</code>.</li>
+          <li>Вкладеність має бути правильною: якщо тег відкрився всередині іншого, то і закритися він має всередині нього.</li>
+          <li>У сторінки зазвичай один головний заголовок <code>&lt;h1&gt;</code>.</li>
+          <li>Для картинки бажано завжди писати <code>alt</code>.</li>
+          <li>HTML відповідає за зміст і структуру, а CSS за зовнішній вигляд.</li>
+        </ul>
+      </article>
+
+      <article class="cheat-card" id="full-example">
+        <h2>Повний приклад простої сторінки</h2>
+        <div class="code-block">
+          <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="uk"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Мій сайт&lt;/title&gt;
+  &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Клуб юних програмістів&lt;/h1&gt;
+    &lt;nav&gt;
+      &lt;a href="index.html"&gt;Головна&lt;/a&gt;
+      &lt;a href="about.html"&gt;Про нас&lt;/a&gt;
+      &lt;a href="contacts.html"&gt;Контакти&lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;main&gt;
+    &lt;section&gt;
+      &lt;h2&gt;Чим ми займаємося&lt;/h2&gt;
+      &lt;p&gt;Ми вивчаємо HTML, CSS і Python Flask.&lt;/p&gt;
+    &lt;/section&gt;
+
+    &lt;section&gt;
+      &lt;h2&gt;Наші теми&lt;/h2&gt;
+      &lt;ul&gt;
+        &lt;li&gt;Створення сторінок&lt;/li&gt;
+        &lt;li&gt;Оформлення сайту&lt;/li&gt;
+        &lt;li&gt;Робота з веб-сервером&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+
+  &lt;footer&gt;
+    &lt;p&gt;2026 Code Academy&lt;/p&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

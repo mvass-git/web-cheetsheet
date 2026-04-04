@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Як підключити CSS</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="subpage-header">
+    <nav class="main-nav">
+      <a href="index.html">Головна</a>
+      <a href="html-tags.html">HTML</a>
+      <a href="css-selectors.html">CSS</a>
+      <a href="connect-css.html">Підключення CSS</a>
+    </nav>
+    <p class="eyebrow">Шпаргалка 3</p>
+    <h1>Як підключити CSS</h1>
+    <p class="lead">Один із найважливіших шаблонів, який корисно побачити кілька разів.</p>
+  </header>
+
+  <main class="page">
+    <section class="cheat-sheet single-column">
+      <article class="cheat-card">
+        <h2>Крок 1. Створити файл стилів</h2>
+        <p>Наприклад, файл <strong><code>styles.css</code></strong>.</p>
+        <div class="code-block">
+          <pre><code>body {
+  background-color: lightyellow;
+}
+
+h1 {
+  color: darkblue;
+}</code></pre>
+        </div>
+      </article>
+
+      <article class="cheat-card">
+        <h2>Крок 2. Підключити файл у HTML</h2>
+        <p>Тег підключення пишемо всередині <strong><code>head</code></strong>.</p>
+        <div class="code-block">
+          <pre><code>&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Моя сторінка&lt;/title&gt;
+  &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;</code></pre>
+        </div>
+      </article>
+
+      <article class="cheat-card">
+        <h2>Типова помилка</h2>
+        <p>Якщо стиль не працює, треба перевірити:</p>
+        <ul class="tip-list">
+          <li>чи правильно написано ім'я файлу</li>
+          <li>чи файл лежить у тій самій папці</li>
+          <li>чи є тег <code>link</code> саме в <code>head</code></li>
+        </ul>
+      </article>
+
+      <article class="cheat-card note-card">
+        <h2>Коротко про CSS</h2>
+        <p>
+          “HTML відповідає за те, що є на сторінці. CSS відповідає за те, як це виглядає.”
+        </p>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS-шпаргалка</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="subpage-header">
+    <nav class="main-nav">
+      <a href="index.html">Головна</a>
+      <a href="html-tags.html">HTML</a>
+      <a href="css-selectors.html">CSS</a>
+      <a href="connect-css.html">Підключення CSS</a>
+    </nav>
+    <p class="eyebrow">Шпаргалка 2</p>
+    <h1>CSS: велика шпаргалка</h1>
+    <p class="lead">
+      Довідник по основах CSS: селектори, властивості, кольори, відступи, межі,
+      розміри, розташування блоків і типові помилки. До нього можна повертатися протягом усього курсу.
+    </p>
+  </header>
+
+  <main class="page">
+    <section class="cheat-sheet single-column wide-sheet">
+      <article class="cheat-card topic-nav">
+        <h2>Зміст</h2>
+        <div class="topic-links">
+          <a href="#what-is-css">Що таке CSS</a>
+          <a href="#css-rule">Будова правила</a>
+          <a href="#selectors">Селектори</a>
+          <a href="#colors-backgrounds">Кольори і фони</a>
+          <a href="#text-styles">Текст і шрифти</a>
+          <a href="#box-model">Відступи і рамки</a>
+          <a href="#sizes">Розміри</a>
+          <a href="#display-layout">Display і layout</a>
+          <a href="#useful-properties">Корисні властивості</a>
+          <a href="#common-mistakes">Часті помилки</a>
+          <a href="#full-css-example">Повний приклад</a>
+        </div>
+      </article>
+
+      <article class="cheat-card" id="what-is-css">
+        <h2>Що таке CSS</h2>
+        <p>
+          CSS відповідає за зовнішній вигляд сторінки: кольори, шрифти, відступи, рамки,
+          фони, розміри та розташування елементів.
+        </p>
+        <ul class="tip-list">
+          <li>HTML створює елементи сторінки.</li>
+          <li>CSS змінює те, як ці елементи виглядають.</li>
+          <li>Один CSS-файл можна підключити одразу до багатьох HTML-сторінок.</li>
+        </ul>
+      </article>
+
+      <article class="cheat-card" id="css-rule">
+        <h2>Будова CSS-правила</h2>
+        <div class="code-block">
+          <pre><code>h1 {
+  color: blue;
+  font-size: 40px;
+}</code></pre>
+        </div>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Частина</th>
+              <th>Що це</th>
+              <th>Приклад</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Селектор</td>
+              <td>Вибирає елемент або групу елементів.</td>
+              <td><code>h1</code></td>
+            </tr>
+            <tr>
+              <td>Властивість</td>
+              <td>Що саме змінюємо.</td>
+              <td><code>color</code></td>
+            </tr>
+            <tr>
+              <td>Значення</td>
+              <td>На що змінюємо.</td>
+              <td><code>blue</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="cheat-card" id="selectors">
+        <h2>Селектори</h2>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Селектор</th>
+              <th>Що вибирає</th>
+              <th>Приклад</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Тег</td>
+              <td>Усі елементи одного типу.</td>
+              <td><code>p { color: black; }</code></td>
+            </tr>
+            <tr>
+              <td><code>.class</code></td>
+              <td>Усі елементи з певним класом.</td>
+              <td><code>.card { background: white; }</code></td>
+            </tr>
+            <tr>
+              <td><code>#id</code></td>
+              <td>Один унікальний елемент.</td>
+              <td><code>#title { font-size: 40px; }</code></td>
+            </tr>
+            <tr>
+              <td><code>*</code></td>
+              <td>Усі елементи на сторінці.</td>
+              <td><code>* { box-sizing: border-box; }</code></td>
+            </tr>
+            <tr>
+              <td><code>a:hover</code></td>
+              <td>Елемент у певному стані.</td>
+              <td><code>a:hover { color: red; }</code></td>
+            </tr>
+            <tr>
+              <td><code>.menu a</code></td>
+              <td>Теги <code>a</code> всередині блоку <code>.menu</code>.</td>
+              <td><code>.menu a { text-decoration: none; }</code></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="code-block">
+          <pre><code>body {
+  margin: 0;
+}
+
+.card {
+  padding: 20px;
+}
+
+#main-title {
+  color: darkblue;
+}
+
+.menu a:hover {
+  color: orange;
+}</code></pre>
+        </div>
+      </article>
+
+      <article class="cheat-card" id="colors-backgrounds">
+        <h2>Кольори і фони</h2>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Властивість</th>
+              <th>Для чого</th>
+              <th>Приклад</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>color</code></td>
+              <td>Колір тексту.</td>
+              <td><code>color: darkblue;</code></td>
+            </tr>
+            <tr>
+              <td><code>background-color</code></td>
+              <td>Колір фону.</td>
+              <td><code>background-color: lightyellow;</code></td>
+            </tr>
+            <tr>
+              <td><code>background</code></td>
+              <td>Короткий запис для фону.</td>
+              <td><code>background: #fff8ef;</code></td>
+            </tr>
+            <tr>
+              <td><code>opacity</code></td>
+              <td>Прозорість елемента.</td>
+              <td><code>opacity: 0.8;</code></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="code-block">
+          <pre><code>body {
+  background-color: #fff8ef;
+  color: #1f2937;
+}
+
+.banner {
+  background: orange;
+}</code></pre>
+        </div>
+      </article>
+
+      <article class="cheat-card" id="text-styles">
+        <h2>Текст і шрифти</h2>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Властивість</th>
+              <th>Для чого</th>
+              <th>Приклад</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>font-family</code></td>
+              <td>Шрифт.</td>
+              <td><code>font-family: Arial, sans-serif;</code></td>
+            </tr>
+            <tr>
+              <td><code>font-size</code></td>
+              <td>Розмір тексту.</td>
+              <td><code>font-size: 20px;</code></td>
+            </tr>
+            <tr>
+              <td><code>font-weight</code></td>
+              <td>Товщина тексту.</td>
+              <td><code>font-weight: bold;</code></td>
+            </tr>
+            <tr>
+              <td><code>text-align</code></td>
+              <td>Вирівнювання тексту.</td>
+              <td><code>text-align: center;</code></td>
+            </tr>
+            <tr>
+              <td><code>line-height</code></td>
+              <td>Висота рядка.</td>
+              <td><code>line-height: 1.6;</code></td>
+            </tr>
+            <tr>
+              <td><code>text-decoration</code></td>
+              <td>Підкреслення або його прибирання.</td>
+              <td><code>text-decoration: none;</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="cheat-card" id="box-model">
+        <h2>Відступи, рамки і модель коробки</h2>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Властивість</th>
+              <th>Для чого</th>
+              <th>Приклад</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>margin</code></td>
+              <td>Зовнішній відступ.</td>
+              <td><code>margin: 20px;</code></td>
+            </tr>
+            <tr>
+              <td><code>padding</code></td>
+              <td>Внутрішній відступ.</td>
+              <td><code>padding: 16px;</code></td>
+            </tr>
+            <tr>
+              <td><code>border</code></td>
+              <td>Рамка.</td>
+              <td><code>border: 2px solid black;</code></td>
+            </tr>
+            <tr>
+              <td><code>border-radius</code></td>
+              <td>Заокруглення кутів.</td>
+              <td><code>border-radius: 12px;</code></td>
+            </tr>
+            <tr>
+              <td><code>box-shadow</code></td>
+              <td>Тінь.</td>
+              <td><code>box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);</code></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="code-block">
+          <pre><code>.card {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #d0d7de;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}</code></pre>
+        </div>
+      </article>
+
+      <article class="cheat-card" id="sizes">
+        <h2>Розміри</h2>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Властивість</th>
+              <th>Для чого</th>
+              <th>Приклад</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>width</code></td>
+              <td>Ширина.</td>
+              <td><code>width: 300px;</code></td>
+            </tr>
+            <tr>
+              <td><code>height</code></td>
+              <td>Висота.</td>
+              <td><code>height: 200px;</code></td>
+            </tr>
+            <tr>
+              <td><code>max-width</code></td>
+              <td>Максимальна ширина.</td>
+              <td><code>max-width: 100%;</code></td>
+            </tr>
+            <tr>
+              <td><code>min-width</code></td>
+              <td>Мінімальна ширина.</td>
+              <td><code>min-width: 220px;</code></td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Для адаптивних сторінок часто зручно використовувати <code>%</code>, <code>px</code>, <code>rem</code>.</p>
+      </article>
+
+      <article class="cheat-card" id="display-layout">
+        <h2>Display і розташування блоків</h2>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Властивість</th>
+              <th>Для чого</th>
+              <th>Приклад</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>display: block;</code></td>
+              <td>Елемент займає весь рядок.</td>
+              <td><code>div { display: block; }</code></td>
+            </tr>
+            <tr>
+              <td><code>display: inline;</code></td>
+              <td>Елемент стоїть в одному рядку з текстом.</td>
+              <td><code>span { display: inline; }</code></td>
+            </tr>
+            <tr>
+              <td><code>display: inline-block;</code></td>
+              <td>Елемент у рядку, але з шириною і висотою.</td>
+              <td><code>a { display: inline-block; }</code></td>
+            </tr>
+            <tr>
+              <td><code>display: flex;</code></td>
+              <td>Зручно вирівнювати елементи в ряд або стовпчик.</td>
+              <td><code>.menu { display: flex; }</code></td>
+            </tr>
+            <tr>
+              <td><code>gap</code></td>
+              <td>Відстань між елементами у flex/grid.</td>
+              <td><code>gap: 16px;</code></td>
+            </tr>
+            <tr>
+              <td><code>justify-content</code></td>
+              <td>Вирівнювання по горизонталі.</td>
+              <td><code>justify-content: center;</code></td>
+            </tr>
+            <tr>
+              <td><code>align-items</code></td>
+              <td>Вирівнювання по вертикалі.</td>
+              <td><code>align-items: center;</code></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="code-block">
+          <pre><code>.menu {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+}</code></pre>
+        </div>
+      </article>
+
+      <article class="cheat-card" id="useful-properties">
+        <h2>Корисні властивості, які часто знадобляться</h2>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Властивість</th>
+              <th>Для чого</th>
+              <th>Приклад</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>cursor</code></td>
+              <td>Вигляд курсора.</td>
+              <td><code>cursor: pointer;</code></td>
+            </tr>
+            <tr>
+              <td><code>overflow</code></td>
+              <td>Що робити, якщо вміст не поміщається.</td>
+              <td><code>overflow: auto;</code></td>
+            </tr>
+            <tr>
+              <td><code>list-style</code></td>
+              <td>Стиль маркерів списку.</td>
+              <td><code>list-style: none;</code></td>
+            </tr>
+            <tr>
+              <td><code>transition</code></td>
+              <td>Плавна зміна стилів.</td>
+              <td><code>transition: 0.2s;</code></td>
+            </tr>
+            <tr>
+              <td><code>:hover</code></td>
+              <td>Стиль при наведенні мишкою.</td>
+              <td><code>.button:hover { background: darkblue; }</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="cheat-card note-card" id="common-mistakes">
+        <h2>Часті помилки в CSS</h2>
+        <ul class="tip-list">
+          <li>Забули крапку перед класом: треба <code>.card</code>, а не <code>card</code>.</li>
+          <li>Забули двокрапку після властивості: <code>color: red;</code>.</li>
+          <li>Забули крапку з комою між рядками.</li>
+          <li>Пишуть CSS у файлі, але не підключили його через <code>link</code> в HTML.</li>
+          <li>Задали дуже велику ширину або відступи, через що блок “ламає” сторінку.</li>
+          <li>Плутають <code>margin</code> і <code>padding</code>.</li>
+        </ul>
+      </article>
+
+      <article class="cheat-card" id="full-css-example">
+        <h2>Повний приклад CSS для простої сторінки</h2>
+        <div class="code-block">
+          <pre><code>body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #fff8ef;
+  color: #1f2937;
+}
+
+header {
+  background-color: #ffb84d;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+  color: #7a3e00;
+}
+
+nav a {
+  display: inline-block;
+  margin: 10px 8px 0;
+  padding: 8px 12px;
+  color: white;
+  background-color: #2f6fed;
+  text-decoration: none;
+  border-radius: 10px;
+}
+
+.card {
+  max-width: 700px;
+  margin: 24px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}</code></pre>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
