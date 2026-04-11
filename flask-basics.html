@@ -12,14 +12,16 @@
       <a href="index.html">Головна</a>
       <a href="html-tags.html">HTML</a>
       <a href="css-selectors.html">CSS</a>
+      <a href="css-units.html">Одиниці розміру</a>
+      <a href="css-layout.html">Розміщення блоків</a>
       <a href="connect-css.html">Підключення CSS</a>
       <a href="flask-basics.html">Flask</a>
+      <a href="flask-forms.html">Форми</a>
     </nav>
     <p class="eyebrow">Шпаргалка 4</p>
-    <h1>Flask: перші кроки</h1>
+    <h1>Flask: базовий мінімум</h1>
     <p class="lead">
-      Короткий довідник по Flask: як створити застосунок,
-      запустити сервер, зробити маршрути і повернути сторінку в браузер.
+      Короткий довідник: структура проєкту, маршрути, шаблони, <code>static</code> і <code>url_for()</code>.
     </p>
   </header>
 
@@ -28,112 +30,64 @@
       <article class="cheat-card topic-nav">
         <h2>Зміст</h2>
         <div class="topic-links">
-          <a href="#what-is-flask">Що таке Flask</a>
-          <a href="#create-app">Створення застосунку</a>
-          <a href="#run-app">Запуск</a>
+          <a href="#project-structure">Структура проєкту</a>
+          <a href="#app-minimum">Мінімальний app.py</a>
           <a href="#routes">Маршрути</a>
           <a href="#returns">Що може повертати маршрут</a>
-          <a href="#multi-pages">Кілька сторінок</a>
-          <a href="#html-response">Повернення HTML</a>
-          <a href="#templates">Шаблони</a>
-          <a href="#common-errors">Часті помилки</a>
+          <a href="#templates">Як повернути сторінку</a>
+          <a href="#url-for">url_for()</a>
           <a href="#full-example">Повний приклад</a>
         </div>
       </article>
 
-      <article class="cheat-card" id="what-is-flask">
-        <h2>Що таке Flask</h2>
-        <p>
-          Flask це Python-фреймворк для створення веб-застосунків. Простими словами:
-          це програма, яка запускає веб-сервер і показує сторінки в браузері.
-        </p>
+      <article class="cheat-card" id="project-structure">
+        <h2>Структура проєкту</h2>
+        <div class="code-block">
+          <pre><code>my_project/
+  app.py
+  templates/
+    index.html
+    about.html
+  static/
+    styles.css
+    images/
+      robot.png</code></pre>
+        </div>
         <ul class="tip-list">
-          <li>HTML створює сторінки.</li>
-          <li>CSS оформлює сторінки.</li>
-          <li>Flask віддає ці сторінки браузеру.</li>
+          <li><code>app.py</code> містить Flask-код.</li>
+          <li><code>templates</code> містить HTML-сторінки.</li>
+          <li><code>static</code> містить CSS, картинки та інші ресурси.</li>
         </ul>
       </article>
 
-      <article class="cheat-card" id="create-app">
-        <h2>Створення застосунку</h2>
+      <article class="cheat-card" id="app-minimum">
+        <h2>Мінімальний <code>app.py</code></h2>
         <div class="code-block">
-          <pre><code>from flask import Flask
+          <pre><code>from flask import Flask, render_template
 
 app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "Привіт, Flask!"
+    return render_template("index.html")
 
 if __name__ == "__main__":
     app.run(debug=True)</code></pre>
         </div>
-        <table class="info-table">
-          <thead>
-            <tr>
-              <th>Частина</th>
-              <th>Для чого</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><code>from flask import Flask</code></td>
-              <td>Імпорт класу Flask.</td>
-            </tr>
-            <tr>
-              <td><code>app = Flask(__name__)</code></td>
-              <td>Створення застосунку.</td>
-            </tr>
-            <tr>
-              <td><code>@app.route("/")</code></td>
-              <td>Створення маршруту для головної сторінки.</td>
-            </tr>
-            <tr>
-              <td><code>return ...</code></td>
-              <td>Те, що Flask відправить у браузер.</td>
-            </tr>
-            <tr>
-              <td><code>app.run(debug=True)</code></td>
-              <td>Запуск сервера.</td>
-            </tr>
-          </tbody>
-        </table>
-      </article>
-
-      <article class="cheat-card" id="run-app">
-        <h2>Як запустити Flask-застосунок</h2>
-        <p>Якщо код збережено у файлі <code>app.py</code>, його можна запустити так:</p>
-        <div class="code-block">
-          <pre><code>python app.py</code></pre>
-        </div>
-        <p>
-          Після запуску у терміналі зазвичай з'явиться адреса на кшталт
-          <code>http://127.0.0.1:5000</code>. Її треба відкрити в браузері.
-        </p>
+        <p>Запуск: <code>python app.py</code></p>
       </article>
 
       <article class="cheat-card" id="routes">
         <h2>Маршрути</h2>
-        <p>
-          Маршрут це адреса сторінки на сайті. Наприклад:
-        </p>
-        <ul class="tip-list">
-          <li><code>/</code> це головна сторінка</li>
-          <li><code>/about</code> це сторінка "Про нас"</li>
-          <li><code>/contacts</code> це сторінка "Контакти"</li>
-        </ul>
+        <p>Маршрут це адреса сторінки. Наприклад: <code>/</code>, <code>/about</code>, <code>/contacts</code>.</p>
         <div class="code-block">
           <pre><code>@app.route("/")
 def home():
-    return "Головна сторінка"
+    return "Головна"
 
 @app.route("/about")
 def about():
-    return "Сторінка про нас"
-
-@app.route("/contacts")
-def contacts():
-    return "Наші контакти"</code></pre>
+    return "Про нас"</code></pre>
         </div>
       </article>
 
@@ -151,60 +105,25 @@ def contacts():
             <tr>
               <td>Звичайний текст</td>
               <td><code>return "Привіт!"</code></td>
-              <td>У браузері з'явиться текст.</td>
+              <td>Текст у браузері.</td>
             </tr>
             <tr>
               <td>HTML-рядок</td>
               <td><code>return "&lt;h1&gt;Привіт!&lt;/h1&gt;"</code></td>
-              <td>У браузері з'явиться HTML-сторінка.</td>
+              <td>HTML у браузері.</td>
             </tr>
             <tr>
               <td>Шаблон</td>
               <td><code>return render_template("index.html")</code></td>
-              <td>Flask відкриє HTML-файл із папки шаблонів.</td>
+              <td>HTML-файл із папки <code>templates</code>.</td>
             </tr>
           </tbody>
         </table>
       </article>
 
-      <article class="cheat-card" id="multi-pages">
-        <h2>Як зробити кілька сторінок</h2>
-        <div class="code-block">
-          <pre><code>@app.route("/")
-def home():
-    return "&lt;h1&gt;Головна&lt;/h1&gt;&lt;a href='/about'&gt;Про нас&lt;/a&gt;"
-
-@app.route("/about")
-def about():
-    return "&lt;h1&gt;Про нас&lt;/h1&gt;&lt;a href='/'&gt;На головну&lt;/a&gt;"</code></pre>
-        </div>
-        <p>
-          Так можна зробити переходи між сторінками навіть без складної структури проєкту.
-        </p>
-      </article>
-
-      <article class="cheat-card" id="html-response">
-        <h2>Повернення HTML з маршруту</h2>
-        <p>Flask може повернути HTML прямо зі звичайного Python-рядка:</p>
-        <div class="code-block">
-          <pre><code>@app.route("/")
-def home():
-    return """
-    &lt;h1&gt;Мій сайт&lt;/h1&gt;
-    &lt;p&gt;Я вивчаю Flask.&lt;/p&gt;
-    &lt;a href="/about"&gt;Про мене&lt;/a&gt;
-    """</code></pre>
-        </div>
-        <p>
-          Це зручно для дуже маленьких прикладів. Для справжніх сторінок краще використовувати окремі HTML-файли.
-        </p>
-      </article>
-
       <article class="cheat-card" id="templates">
-        <h2>Шаблони: окремі HTML-файли</h2>
-        <p>
-          У Flask часто створюють папку <code>templates</code> і кладуть туди HTML-файли.
-        </p>
+        <h2>Як повернути сторінку</h2>
+        <p>HTML-сторінки кладемо в папку <code>templates</code> і повертаємо через <code>render_template()</code>.</p>
         <div class="code-block">
           <pre><code>from flask import Flask, render_template
 
@@ -218,48 +137,81 @@ def home():
 def about():
     return render_template("about.html")</code></pre>
         </div>
-        <p>
-          Тоді HTML лежить окремо, і код Python стає чистішим.
-        </p>
+        <p>CSS і картинки треба класти в папку <code>static</code>.</p>
       </article>
 
-      <article class="cheat-card note-card" id="common-errors">
-        <h2>Часті помилки</h2>
-        <ul class="tip-list">
-          <li>Забули імпортувати <code>Flask</code> або <code>render_template</code>.</li>
-          <li>Написали маршрут, але не поставили <code>@app.route(...)</code>.</li>
-          <li>Дві функції мають однакову назву.</li>
-          <li>У <code>return</code> повертається неправильний текст або зламаний HTML.</li>
-          <li>Запустили не той файл або не зберегли зміни перед запуском.</li>
-          <li>HTML-файл для <code>render_template</code> лежить не в папці <code>templates</code>.</li>
-        </ul>
+      <article class="cheat-card" id="url-for">
+        <h2><code>url_for()</code></h2>
+        <p><code>url_for()</code> створює правильні посилання на сторінки і ресурси.</p>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Де використовується</th>
+              <th>Приклад</th>
+              <th>Що робить</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Посилання на маршрут</td>
+              <td><code>{{ url_for('about') }}</code></td>
+              <td>Посилання на сторінку <code>/about</code>.</td>
+            </tr>
+            <tr>
+              <td>Посилання на CSS</td>
+              <td><code>{{ url_for('static', filename='styles.css') }}</code></td>
+              <td>Посилання на файл зі стилями.</td>
+            </tr>
+            <tr>
+              <td>Посилання на картинку</td>
+              <td><code>{{ url_for('static', filename='images/robot.png') }}</code></td>
+              <td>Посилання на картинку.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="code-block">
+          <pre><code>&lt;link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"&gt;
+
+&lt;a href="{{ url_for('about') }}"&gt;Про нас&lt;/a&gt;
+
+&lt;img src="{{ url_for('static', filename='images/robot.png') }}" alt="Робот"&gt;</code></pre>
+        </div>
       </article>
 
       <article class="cheat-card" id="full-example">
         <h2>Повний базовий приклад</h2>
         <div class="code-block">
-          <pre><code>from flask import Flask
+          <pre><code>from flask import Flask, render_template
 
 app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return """
-    &lt;h1&gt;Ласкаво просимо!&lt;/h1&gt;
-    &lt;p&gt;Це головна сторінка.&lt;/p&gt;
-    &lt;a href="/about"&gt;Про нас&lt;/a&gt;
-    """
+    return render_template("index.html")
 
 @app.route("/about")
 def about():
-    return """
-    &lt;h1&gt;Про нас&lt;/h1&gt;
-    &lt;p&gt;Ми вивчаємо Python Flask.&lt;/p&gt;
-    &lt;a href="/"&gt;На головну&lt;/a&gt;
-    """
+    return render_template("about.html")
 
 if __name__ == "__main__":
     app.run(debug=True)</code></pre>
+        </div>
+        <div class="code-block">
+          <pre><code>&lt;!-- templates/index.html --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang="uk"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Головна&lt;/title&gt;
+  &lt;link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Ласкаво просимо!&lt;/h1&gt;
+  &lt;p&gt;Це головна сторінка.&lt;/p&gt;
+  &lt;a href="{{ url_for('about') }}"&gt;Про нас&lt;/a&gt;
+  &lt;img src="{{ url_for('static', filename='images/robot.png') }}" alt="Робот"&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
         </div>
       </article>
     </section>

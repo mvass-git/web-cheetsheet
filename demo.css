@@ -1,0 +1,20 @@
+html{
+    background-color: aqua;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#long-text {
+    font-size: 25px;
+    border-style:groove;
+    border-width: 5px;
+    border-radius: 15px;
+
+    width:30%;
+
+    text-align: center;
+    margin-left: 25%;
+    padding-bottom: 30px;
+
+}

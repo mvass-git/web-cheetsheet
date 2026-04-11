@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS: одиниці розміру</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="subpage-header">
+    <nav class="main-nav">
+      <a href="index.html">Головна</a>
+      <a href="html-tags.html">HTML</a>
+      <a href="css-selectors.html">CSS</a>
+      <a href="css-units.html">Одиниці розміру</a>
+      <a href="css-layout.html">Розміщення блоків</a>
+      <a href="connect-css.html">Підключення CSS</a>
+      <a href="flask-basics.html">Flask</a>
+      <a href="flask-forms.html">Форми</a>
+    </nav>
+    <p class="eyebrow">Шпаргалка 3</p>
+    <h1>CSS: одиниці розміру</h1>
+    <p class="lead">
+      Короткий довідник по основних одиницях у верстці: <code>px</code>, <code>%</code>, <code>em</code>, <code>rem</code>, <code>vw</code>, <code>vh</code>.
+    </p>
+  </header>
+
+  <main class="page">
+    <section class="cheat-sheet single-column wide-sheet">
+      <article class="cheat-card topic-nav">
+        <h2>Зміст</h2>
+        <div class="topic-links">
+          <a href="#px">px</a>
+          <a href="#percent">%</a>
+          <a href="#em">em</a>
+          <a href="#rem">rem</a>
+          <a href="#vw-vh">vw і vh</a>
+          <a href="#when-to-use">Коли що використовувати</a>
+          <a href="#example">Приклад</a>
+        </div>
+      </article>
+
+      <article class="cheat-card" id="px">
+        <h2><code>px</code></h2>
+        <p><code>px</code> це пікселі. Фіксований розмір.</p>
+        <div class="code-block">
+          <pre><code>h1 {
+  font-size: 32px;
+}
+
+.card {
+  padding: 20px;
+}</code></pre>
+        </div>
+        <p>Добре підходить для рамок, відступів, невеликих точних розмірів.</p>
+      </article>
+
+      <article class="cheat-card" id="percent">
+        <h2><code>%</code></h2>
+        <p><code>%</code> це відсоток від розміру батьківського елемента.</p>
+        <div class="code-block">
+          <pre><code>.box {
+  width: 50%;
+}</code></pre>
+        </div>
+        <p>Часто використовується для ширини блоків.</p>
+      </article>
+
+      <article class="cheat-card" id="em">
+        <h2><code>em</code></h2>
+        <p><code>em</code> залежить від розміру шрифту поточного елемента.</p>
+        <div class="code-block">
+          <pre><code>.card {
+  font-size: 20px;
+  padding: 1em;
+}</code></pre>
+        </div>
+        <p>Якщо <code>font-size</code> дорівнює <code>20px</code>, то <code>1em</code> теж буде <code>20px</code>.</p>
+      </article>
+
+      <article class="cheat-card" id="rem">
+        <h2><code>rem</code></h2>
+        <p><code>rem</code> залежить від розміру шрифту кореневого елемента, тобто зазвичай від <code>html</code>.</p>
+        <div class="code-block">
+          <pre><code>h2 {
+  font-size: 2rem;
+}</code></pre>
+        </div>
+        <p>Зручна одиниця для розмірів тексту і відступів, бо вона більш передбачувана, ніж <code>em</code>.</p>
+      </article>
+
+      <article class="cheat-card" id="vw-vh">
+        <h2><code>vw</code> і <code>vh</code></h2>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Одиниця</th>
+              <th>Що означає</th>
+              <th>Приклад</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>vw</code></td>
+              <td>Відсоток від ширини вікна браузера.</td>
+              <td><code>width: 50vw;</code></td>
+            </tr>
+            <tr>
+              <td><code>vh</code></td>
+              <td>Відсоток від висоти вікна браузера.</td>
+              <td><code>height: 100vh;</code></td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Часто використовуються для великих блоків на весь екран.</p>
+      </article>
+
+      <article class="cheat-card" id="when-to-use">
+        <h2>Коли що використовувати</h2>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Одиниця</th>
+              <th>Коли зручно</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>px</code></td>
+              <td>Точні відступи, рамки, невеликі елементи.</td>
+            </tr>
+            <tr>
+              <td><code>%</code></td>
+              <td>Ширина блоків відносно контейнера.</td>
+            </tr>
+            <tr>
+              <td><code>em</code></td>
+              <td>Розміри, які мають залежати від шрифту елемента.</td>
+            </tr>
+            <tr>
+              <td><code>rem</code></td>
+              <td>Текст і відступи на всій сторінці.</td>
+            </tr>
+            <tr>
+              <td><code>vw</code>, <code>vh</code></td>
+              <td>Великі секції на екран.</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="cheat-card note-card" id="example">
+        <h2>Короткий приклад</h2>
+        <div class="code-block">
+          <pre><code>body {
+  font-size: 16px;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+.container {
+  width: 80%;
+  max-width: 900px;
+  padding: 20px;
+}
+
+.hero {
+  min-height: 100vh;
+}</code></pre>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

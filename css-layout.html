@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS: розміщення блоків</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="subpage-header">
+    <nav class="main-nav">
+      <a href="index.html">Головна</a>
+      <a href="html-tags.html">HTML</a>
+      <a href="css-selectors.html">CSS</a>
+      <a href="css-units.html">Одиниці розміру</a>
+      <a href="css-layout.html">Розміщення блоків</a>
+      <a href="connect-css.html">Підключення CSS</a>
+      <a href="flask-basics.html">Flask</a>
+      <a href="flask-forms.html">Форми</a>
+    </nav>
+    <p class="eyebrow">Шпаргалка 4</p>
+    <h1>CSS: розміщення блоків</h1>
+    <p class="lead">
+      Короткий довідник по layout: як поставити блоки один під одним, в ряд, у сітку і як їх відцентрувати.
+    </p>
+  </header>
+
+  <main class="page">
+    <section class="cheat-sheet single-column wide-sheet">
+      <article class="cheat-card topic-nav">
+        <h2>Зміст</h2>
+        <div class="topic-links">
+          <a href="#normal-flow">Звичайний потік</a>
+          <a href="#margin-auto">margin: auto</a>
+          <a href="#inline-block">inline-block</a>
+          <a href="#flex">Flex</a>
+          <a href="#grid">Grid</a>
+          <a href="#centering">Центрування</a>
+          <a href="#common-patterns">Швидкі шаблони</a>
+        </div>
+      </article>
+
+      <article class="cheat-card" id="normal-flow">
+        <h2>Звичайний потік сторінки</h2>
+        <p>За замовчуванням блоки йдуть один під одним зверху вниз.</p>
+        <div class="code-block">
+          <pre><code>&lt;div&gt;Блок 1&lt;/div&gt;
+&lt;div&gt;Блок 2&lt;/div&gt;
+&lt;div&gt;Блок 3&lt;/div&gt;</code></pre>
+        </div>
+        <p>Якщо нічого не змінювати, саме так і буде виглядати сторінка.</p>
+      </article>
+
+      <article class="cheat-card" id="margin-auto">
+        <h2><code>margin: auto</code></h2>
+        <p>Так часто центрують блок по горизонталі.</p>
+        <div class="code-block">
+          <pre><code>.card {
+  width: 300px;
+  margin: 0 auto;
+}</code></pre>
+        </div>
+        <p>Працює для блоку, у якого є задана ширина.</p>
+      </article>
+
+      <article class="cheat-card" id="inline-block">
+        <h2><code>inline-block</code></h2>
+        <p>Дозволяє поставити кілька елементів у ряд, але зараз частіше використовують <code>flex</code>.</p>
+        <div class="code-block">
+          <pre><code>.box {
+  display: inline-block;
+  width: 150px;
+}</code></pre>
+        </div>
+      </article>
+
+      <article class="cheat-card" id="flex">
+        <h2>Flex</h2>
+        <p><code>flex</code> це найзручніший спосіб ставити блоки в ряд або в стовпчик.</p>
+        <div class="code-block">
+          <pre><code>.menu {
+  display: flex;
+  gap: 16px;
+}</code></pre>
+        </div>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Властивість</th>
+              <th>Для чого</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>display: flex</code></td>
+              <td>Вмикає flex-режим.</td>
+            </tr>
+            <tr>
+              <td><code>flex-direction</code></td>
+              <td>Напрямок: ряд або стовпчик.</td>
+            </tr>
+            <tr>
+              <td><code>justify-content</code></td>
+              <td>Вирівнювання по головній осі.</td>
+            </tr>
+            <tr>
+              <td><code>align-items</code></td>
+              <td>Вирівнювання по другій осі.</td>
+            </tr>
+            <tr>
+              <td><code>gap</code></td>
+              <td>Відстань між елементами.</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="cheat-card" id="grid">
+        <h2>Grid</h2>
+        <p><code>grid</code> зручно використовувати для карток і сіток.</p>
+        <div class="code-block">
+          <pre><code>.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}</code></pre>
+        </div>
+        <p>Це означає: 3 колонки однакової ширини з відступами між ними.</p>
+      </article>
+
+      <article class="cheat-card" id="centering">
+        <h2>Центрування</h2>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Що треба</th>
+              <th>Рішення</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Відцентрувати блок по горизонталі</td>
+              <td><code>margin: 0 auto;</code></td>
+            </tr>
+            <tr>
+              <td>Відцентрувати текст</td>
+              <td><code>text-align: center;</code></td>
+            </tr>
+            <tr>
+              <td>Відцентрувати елемент по горизонталі і вертикалі</td>
+              <td><code>display: flex; justify-content: center; align-items: center;</code></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="code-block">
+          <pre><code>.center-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+}</code></pre>
+        </div>
+      </article>
+
+      <article class="cheat-card note-card" id="common-patterns">
+        <h2>Швидкі шаблони</h2>
+        <div class="code-block">
+          <pre><code>/* Блок по центру */
+.container {
+  width: 80%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Елементи в ряд */
+.row {
+  display: flex;
+  gap: 16px;
+}
+
+/* Картки сіткою */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Центрування всередині блоку */
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}</code></pre>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
