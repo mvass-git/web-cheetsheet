@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Демо: CSS анімації</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="subpage-header">
+    <nav class="main-nav">
+      <a href="index.html">Головна</a>
+      <a href="html-tags.html">HTML</a>
+      <a href="css-selectors.html">CSS</a>
+      <a href="css-units.html">Одиниці розміру</a>
+      <a href="css-layout.html">Розміщення блоків</a>
+      <a href="css-position.html">Position</a>
+      <a href="css-position-demo.html">Демо Position</a>
+      <a href="css-animations.html">Анімації</a>
+      <a href="css-animations-demo.html">Демо Анімацій</a>
+      <a href="connect-css.html">Підключення CSS</a>
+      <a href="flask-basics.html">Flask</a>
+      <a href="flask-forms.html">Форми</a>
+    </nav>
+    <p class="eyebrow">Демо</p>
+    <h1>Демонстрація CSS-анімацій</h1>
+    <p class="lead">
+      На цій сторінці можна побачити прості анімації в дії: hover, пульсацію, рух і обертання.
+    </p>
+  </header>
+
+  <main class="page">
+    <section class="cheat-sheet single-column wide-sheet">
+      <article class="cheat-card">
+        <p class="section-label">Посилання назад</p>
+        <h2>Спочатку довідник, потім демонстрація</h2>
+        <p>Якщо треба згадати синтаксис, відкрий шпаргалку по анімаціях.</p>
+        <a class="button" href="css-animations.html">Відкрити довідник по анімаціях</a>
+      </article>
+
+      <article class="cheat-card">
+        <p class="section-label">Transition</p>
+        <h2>Наведи курсор</h2>
+        <div class="animation-demo-row">
+          <div class="animation-demo-hover">hover me</div>
+        </div>
+      </article>
+
+      <article class="cheat-card">
+        <p class="section-label">Pulse</p>
+        <h2>Пульсація через <code>@keyframes</code></h2>
+        <div class="animation-demo-row">
+          <div class="animation-demo-pulse"></div>
+        </div>
+      </article>
+
+      <article class="cheat-card">
+        <p class="section-label">Move</p>
+        <h2>Рух елемента</h2>
+        <div class="animation-demo-track">
+          <div class="animation-demo-move"></div>
+        </div>
+      </article>
+
+      <article class="cheat-card">
+        <p class="section-label">Rotate</p>
+        <h2>Обертання</h2>
+        <div class="animation-demo-row">
+          <div class="animation-demo-rotate">+</div>
+        </div>
+      </article>
+
+      <article class="cheat-card note-card">
+        <p class="section-label">Ідеї</p>
+        <h2>Що можна спробувати самому</h2>
+        <ul class="tip-list">
+          <li>Змінити час анімації.</li>
+          <li>Зробити hover повільнішим.</li>
+          <li>Поміняти напрямок руху.</li>
+          <li>Поєднати <code>transform</code> і <code>opacity</code>.</li>
+        </ul>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
