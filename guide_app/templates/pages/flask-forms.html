@@ -1,0 +1,159 @@
+﻿{% extends "base.html" %}
+{% set header_class = "subpage-header" %}
+{% set eyebrow %}Шпаргалка 5{% endset %}
+{% set page_title %}Flask: робота з формами{% endset %}
+{% set lead %}Короткий довідник: як прийняти дані з форми, дістати їх у Flask і обробити на сервері.{% endset %}
+
+{% block title %}Flask і форми{% endblock %}
+
+{% block content %}
+{% raw %}
+<section class="cheat-sheet single-column wide-sheet">
+      <article class="cheat-card topic-nav">
+        <h2>Зміст</h2>
+        <div class="topic-links">
+          <a href="#form-idea">Як це працює</a>
+          <a href="#html-form">Форма в HTML</a>
+          <a href="#post-route">Обробка у Flask</a>
+          <a href="#request-form">request.form</a>
+          <a href="#get-post">GET і POST</a>
+          <a href="#full-example">Повний приклад</a>
+        </div>
+      </article>
+
+      <article class="cheat-card" id="form-idea">
+        <h2>Як це працює</h2>
+        <ul class="tip-list">
+          <li>Користувач заповнює форму на сторінці.</li>
+          <li>Браузер надсилає дані на маршрут Flask.</li>
+          <li>Flask бере ці дані через <code>request</code>.</li>
+          <li>Сервер може щось із ними зробити і повернути відповідь.</li>
+        </ul>
+      </article>
+
+      <article class="cheat-card" id="html-form">
+        <h2>Форма в HTML</h2>
+        <div class="code-block">
+          <pre><code>&lt;form method="post"&gt;
+  &lt;label for="name"&gt;Ім'я&lt;/label&gt;
+  &lt;input type="text" id="name" name="name"&gt;
+
+  &lt;button type="submit"&gt;Надіслати&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        </div>
+        <ul class="tip-list">
+          <li><code>method="post"</code> означає, що форма надсилає дані на сервер.</li>
+          <li><code>name="name"</code> це ключ, за яким Flask зможе знайти значення.</li>
+        </ul>
+      </article>
+
+      <article class="cheat-card" id="post-route">
+        <h2>Обробка у Flask</h2>
+        <div class="code-block">
+          <pre><code>from flask import Flask, render_template, request
+
+app = Flask(__name__)
+
+@app.route("/", methods=["GET", "POST"])
+def home():
+    if request.method == "POST":
+        user_name = request.form["name"]
+        return f"Привіт, {user_name}!"
+
+    return render_template("index.html")</code></pre>
+        </div>
+        <p>
+          Якщо сторінку просто відкрили, повертається HTML. Якщо форму надіслали, Flask бере дані і обробляє їх.
+        </p>
+      </article>
+
+      <article class="cheat-card" id="request-form">
+        <h2><code>request.form</code></h2>
+        <p><code>request.form</code> містить дані, які прийшли з форми.</p>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Запис</th>
+              <th>Що робить</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>request.form["name"]</code></td>
+              <td>Взяти значення поля з ім'ям <code>name</code>.</td>
+            </tr>
+            <tr>
+              <td><code>request.form.get("name")</code></td>
+              <td>Теж взяти значення, але м'якше, без помилки, якщо поля немає.</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="cheat-card" id="get-post">
+        <h2>GET і POST</h2>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Метод</th>
+              <th>Коли використовується</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>GET</code></td>
+              <td>Коли просто відкриваємо сторінку.</td>
+            </tr>
+            <tr>
+              <td><code>POST</code></td>
+              <td>Коли надсилаємо дані з форми.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="code-block">
+          <pre><code>@app.route("/", methods=["GET", "POST"])</code></pre>
+        </div>
+      </article>
+
+      <article class="cheat-card" id="full-example">
+        <h2>Повний приклад</h2>
+        <div class="code-block">
+          <pre><code>from flask import Flask, render_template, request
+
+app = Flask(__name__)
+
+@app.route("/", methods=["GET", "POST"])
+def home():
+    if request.method == "POST":
+        user_name = request.form.get("name")
+        return f"Привіт, {user_name}!"
+
+    return render_template("index.html")
+
+if __name__ == "__main__":
+    app.run(debug=True)</code></pre>
+        </div>
+
+        <div class="code-block">
+          <pre><code>&lt;!-- templates/index.html --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang="uk"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Форма&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Моя форма&lt;/h1&gt;
+
+  &lt;form method="post"&gt;
+    &lt;label for="name"&gt;Ім'я&lt;/label&gt;
+    &lt;input type="text" id="name" name="name"&gt;
+    &lt;button type="submit"&gt;Надіслати&lt;/button&gt;
+  &lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+      </article>
+    </section>
+{% endraw %}
+{% endblock %}

@@ -1,0 +1,166 @@
+﻿{% extends "base.html" %}
+{% set header_class = "subpage-header" %}
+{% set eyebrow %}Шпаргалка 5{% endset %}
+{% set page_title %}CSS: position{% endset %}
+{% set lead %}Короткий довідник по позиціонуванню елементів: <code>static</code>, <code>relative</code>, <code>absolute</code>, <code>fixed</code>, <code>sticky</code>.{% endset %}
+
+{% block title %}CSS: position{% endblock %}
+
+{% block content %}
+{% raw %}
+<section class="cheat-sheet single-column wide-sheet">
+      <article class="cheat-card topic-nav">
+        <h2>Зміст</h2>
+        <div class="topic-links">
+          <a href="#static">static</a>
+          <a href="#relative">relative</a>
+          <a href="#absolute">absolute</a>
+          <a href="#fixed">fixed</a>
+          <a href="#sticky">sticky</a>
+          <a href="#offsets">top/right/bottom/left</a>
+          <a href="#z-index">z-index</a>
+          <a href="#example">Короткий приклад</a>
+        </div>
+      </article>
+
+      <article class="cheat-card">
+        <p class="section-label">Демонстрація</p>
+        <h2>Побачити це в дії</h2>
+        <p>Окрема сторінка показує, як працюють <code>absolute</code>, <code>sticky</code> і <code>fixed</code> на живому прикладі.</p>
+        <a class="button" href="css-position-demo.html">Відкрити демо position</a>
+      </article>
+
+      <article class="cheat-card" id="static">
+        <h2><code>position: static</code></h2>
+        <p>Звичайна поведінка за замовчуванням. Елемент стоїть у нормальному потоці сторінки.</p>
+        <div class="code-block">
+          <pre><code>.box {
+  position: static;
+}</code></pre>
+        </div>
+      </article>
+
+      <article class="cheat-card" id="relative">
+        <h2><code>position: relative</code></h2>
+        <p>Елемент залишається на своєму місці, але його можна трохи зсунути.</p>
+        <div class="code-block">
+          <pre><code>.box {
+  position: relative;
+  top: 10px;
+  left: 20px;
+}</code></pre>
+        </div>
+        <p>Часто використовується ще й як “точка прив'язки” для елемента з <code>absolute</code> усередині.</p>
+      </article>
+
+      <article class="cheat-card" id="absolute">
+        <h2><code>position: absolute</code></h2>
+        <p>Елемент прибирається зі звичайного потоку і позиціонується відносно найближчого батька з <code>position: relative</code>.</p>
+        <div class="code-block">
+          <pre><code>.card {
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}</code></pre>
+        </div>
+      </article>
+
+      <article class="cheat-card" id="fixed">
+        <h2><code>position: fixed</code></h2>
+        <p>Елемент прикріплюється до вікна браузера і не рухається під час прокрутки.</p>
+        <div class="code-block">
+          <pre><code>.button-up {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}</code></pre>
+        </div>
+      </article>
+
+      <article class="cheat-card" id="sticky">
+        <h2><code>position: sticky</code></h2>
+        <p>Елемент поводиться як звичайний, поки не дійде до заданої межі, після чого “прилипає”.</p>
+        <div class="code-block">
+          <pre><code>.menu {
+  position: sticky;
+  top: 0;
+}</code></pre>
+        </div>
+      </article>
+
+      <article class="cheat-card" id="offsets">
+        <h2><code>top</code>, <code>right</code>, <code>bottom</code>, <code>left</code></h2>
+        <p>Ці властивості задають зміщення елемента для <code>relative</code>, <code>absolute</code>, <code>fixed</code>, <code>sticky</code>.</p>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Властивість</th>
+              <th>Що робить</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>top</code></td>
+              <td>Зміщує вниз від верхньої межі.</td>
+            </tr>
+            <tr>
+              <td><code>right</code></td>
+              <td>Зміщує від правої межі.</td>
+            </tr>
+            <tr>
+              <td><code>bottom</code></td>
+              <td>Зміщує від нижньої межі.</td>
+            </tr>
+            <tr>
+              <td><code>left</code></td>
+              <td>Зміщує від лівої межі.</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="cheat-card" id="z-index">
+        <h2><code>z-index</code></h2>
+        <p><code>z-index</code> визначає, який елемент буде поверх іншого.</p>
+        <div class="code-block">
+          <pre><code>.menu {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}</code></pre>
+        </div>
+      </article>
+
+      <article class="cheat-card note-card" id="example">
+        <h2>Короткий приклад</h2>
+        <div class="code-block">
+          <pre><code>.card {
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.menu {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.help-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}</code></pre>
+        </div>
+      </article>
+    </section>
+{% endraw %}
+{% endblock %}

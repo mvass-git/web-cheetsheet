@@ -1,0 +1,63 @@
+﻿{% extends "base.html" %}
+{% set header_class = "subpage-header" %}
+{% set eyebrow %}Демо{% endset %}
+{% set page_title %}Демонстрація CSS-анімацій{% endset %}
+{% set lead %}На цій сторінці можна побачити прості анімації в дії: hover, пульсацію, рух і обертання.{% endset %}
+
+{% block title %}Демо: CSS анімації{% endblock %}
+
+{% block content %}
+{% raw %}
+<section class="cheat-sheet single-column wide-sheet">
+      <article class="cheat-card">
+        <p class="section-label">Посилання назад</p>
+        <h2>Спочатку довідник, потім демонстрація</h2>
+        <p>Якщо треба згадати синтаксис, відкрий шпаргалку по анімаціях.</p>
+        <a class="button" href="css-animations.html">Відкрити довідник по анімаціях</a>
+      </article>
+
+      <article class="cheat-card">
+        <p class="section-label">Transition</p>
+        <h2>Наведи курсор</h2>
+        <div class="animation-demo-row">
+          <div class="animation-demo-hover">hover me</div>
+        </div>
+      </article>
+
+      <article class="cheat-card">
+        <p class="section-label">Pulse</p>
+        <h2>Пульсація через <code>@keyframes</code></h2>
+        <div class="animation-demo-row">
+          <div class="animation-demo-pulse"></div>
+        </div>
+      </article>
+
+      <article class="cheat-card">
+        <p class="section-label">Move</p>
+        <h2>Рух елемента</h2>
+        <div class="animation-demo-track">
+          <div class="animation-demo-move"></div>
+        </div>
+      </article>
+
+      <article class="cheat-card">
+        <p class="section-label">Rotate</p>
+        <h2>Обертання</h2>
+        <div class="animation-demo-row">
+          <div class="animation-demo-rotate">+</div>
+        </div>
+      </article>
+
+      <article class="cheat-card note-card">
+        <p class="section-label">Ідеї</p>
+        <h2>Що можна спробувати самому</h2>
+        <ul class="tip-list">
+          <li>Змінити час анімації.</li>
+          <li>Зробити hover повільнішим.</li>
+          <li>Поміняти напрямок руху.</li>
+          <li>Поєднати <code>transform</code> і <code>opacity</code>.</li>
+        </ul>
+      </article>
+    </section>
+{% endraw %}
+{% endblock %}

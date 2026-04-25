@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+{% set header_class = "subpage-header" %}
+{% set eyebrow %}Шпаргалка 7{% endset %}
+{% set page_title %}Jinja: шаблони у Flask{% endset %}
+{% set lead %}Короткий практичний довідник: підстановка значень, умови, цикли, наслідування шаблонів і часткові шаблони.{% endset %}
+
+{% block title %}Jinja-шаблони{% endblock %}
+
+{% block content %}
+<section class="cheat-sheet single-column wide-sheet">
+  <article class="cheat-card topic-nav">
+    <h2>Зміст</h2>
+    <div class="topic-links">
+      <a href="#what-is-jinja">Що таке Jinja</a>
+      <a href="#render-template">render_template()</a>
+      <a href="#variables">Змінні</a>
+      <a href="#if">Умови</a>
+      <a href="#for">Цикли</a>
+      <a href="#forms">Форма -> інша сторінка</a>
+      <a href="#extends">extends і block</a>
+      <a href="#include">include</a>
+      <a href="#when-to-use">Що для чого</a>
+    </div>
+  </article>
+
+  <article class="cheat-card" id="what-is-jinja">
+    <h2>Що таке Jinja</h2>
+    <p>Jinja це шаблонізатор для Flask. Він дозволяє вставляти Python-дані в HTML.</p>
+    <ul class="tip-list">
+      <li>Показати текст із Python на сторінці.</li>
+      <li>Вивести список через цикл.</li>
+      <li>Показати або сховати блок через умову.</li>
+      <li>Не дублювати однакові частини сторінок.</li>
+    </ul>
+  </article>
+
+  <article class="cheat-card" id="render-template">
+    <h2><code>render_template()</code></h2>
+    <p>Через <code>render_template()</code> Flask відкриває HTML-шаблон з папки <code>templates</code> і передає в нього дані.</p>
+    <div class="code-block">
+      <pre><code>project/
+├── app.py
+└── templates/
+    ├── index.html
+    ├── result.html
+    └── base.html</code></pre>
+    </div>
+    <div class="code-block">
+      <pre><code>from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return render_template("index.html", title="Мій сайт")</code></pre>
+    </div>
+  </article>
+
+  <article class="cheat-card" id="variables">
+    <h2>Змінні в шаблоні</h2>
+    <p>Щоб вставити значення в HTML, використовують <code>&#123;&#123; ... &#125;&#125;</code>.</p>
+    <div class="code-block">
+      <pre><code>&lt;h1&gt;&#123;&#123; title &#125;&#125;&lt;/h1&gt;
+&lt;p&gt;Привіт, &#123;&#123; username &#125;&#125;!&lt;/p&gt;</code></pre>
+    </div>
+    <div class="code-block">
+      <pre><code>return render_template(
+    "index.html",
+    title="Головна",
+    username="Оля"
+)</code></pre>
+    </div>
+  </article>
+
+  <article class="cheat-card" id="if">
+    <h2>Умови</h2>
+    <p>Для умов використовують <code>&#123;% if ... %&#125;</code>.</p>
+    <div class="code-block">
+      <pre><code>{% raw %}{% if username %}
+  &lt;p&gt;Привіт, {{ username }}!&lt;/p&gt;
+{% else %}
+  &lt;p&gt;Ім'я ще не введене.&lt;/p&gt;
+{% endif %}{% endraw %}</code></pre>
+    </div>
+  </article>
+
+  <article class="cheat-card" id="for">
+    <h2>Цикли</h2>
+    <p>Для списків використовують <code>&#123;% for ... %&#125;</code>.</p>
+    <div class="code-block">
+      <pre><code>{% raw %}&lt;ul&gt;
+  {% for topic in topics %}
+    &lt;li&gt;{{ topic }}&lt;/li&gt;
+  {% endfor %}
+&lt;/ul&gt;{% endraw %}</code></pre>
+    </div>
+    <div class="code-block">
+      <pre><code>return render_template(
+    "topics.html",
+    topics=["HTML", "CSS", "Flask"]
+)</code></pre>
+    </div>
+  </article>
+
+  <article class="cheat-card" id="forms">
+    <h2>Форма -> інша сторінка</h2>
+    <p>Типовий кейс: взяти дані з форми і показати їх на іншій сторінці.</p>
+    <div class="code-block">
+      <pre><code>from flask import Flask, render_template, request
+
+app = Flask(__name__)
+
+@app.route("/", methods=["GET", "POST"])
+def home():
+    if request.method == "POST":
+        username = request.form.get("name")
+        return render_template("result.html", username=username)
+
+    return render_template("form.html")</code></pre>
+    </div>
+    <div class="code-block">
+      <pre><code>{% raw %}&lt;!-- result.html --&gt;
+&lt;h1&gt;Результат&lt;/h1&gt;
+&lt;p&gt;Привіт, {{ username }}!&lt;/p&gt;{% endraw %}</code></pre>
+    </div>
+    <p>Саме тут шаблони особливо зручні: сторінка одна, а текст на ній змінюється залежно від того, що ввів користувач.</p>
+  </article>
+
+  <article class="cheat-card" id="extends">
+    <h2><code>extends</code> і <code>block</code></h2>
+    <p>Це спосіб не дублювати каркас сторінки на кожній HTML-сторінці.</p>
+    <div class="code-block">
+      <pre><code>{% raw %}&lt;!-- base.html --&gt;
+&lt;h1&gt;Мій сайт&lt;/h1&gt;
+{% block content %}{% endblock %}{% endraw %}</code></pre>
+    </div>
+    <div class="code-block">
+      <pre><code>{% raw %}&lt;!-- about.html --&gt;
+{% extends "base.html" %}
+
+{% block content %}
+  &lt;p&gt;Сторінка про нас&lt;/p&gt;
+{% endblock %}{% endraw %}</code></pre>
+    </div>
+  </article>
+
+  <article class="cheat-card" id="include">
+    <h2><code>include</code> і часткові шаблони</h2>
+    <p>Якщо шматок коду повторюється, його зручно винести в окремий файл.</p>
+    <div class="code-block">
+      <pre><code>{% raw %}&lt;!-- partials/_menu.html --&gt;
+&lt;nav&gt;
+  &lt;a href="/"&gt;Головна&lt;/a&gt;
+  &lt;a href="/about"&gt;Про нас&lt;/a&gt;
+&lt;/nav&gt;{% endraw %}</code></pre>
+    </div>
+    <div class="code-block">
+      <pre><code>{% raw %}&lt;!-- base.html --&gt;
+{% include "partials/_menu.html" %}{% endraw %}</code></pre>
+    </div>
+    <p>Так часто виносять меню, підвал сайту, картку товару, повідомлення або інші повторювані блоки.</p>
+  </article>
+
+  <article class="cheat-card note-card" id="when-to-use">
+    <h2>Що для чого</h2>
+    <table class="info-table">
+      <thead>
+        <tr>
+          <th>Конструкція</th>
+          <th>Коли використовувати</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>&#123;&#123; value &#125;&#125;</code></td>
+          <td>Показати змінну на сторінці.</td>
+        </tr>
+        <tr>
+          <td><code>&#123;% if ... %&#125;</code></td>
+          <td>Показати блок тільки за певної умови.</td>
+        </tr>
+        <tr>
+          <td><code>&#123;% for ... %&#125;</code></td>
+          <td>Вивести список елементів.</td>
+        </tr>
+        <tr>
+          <td><code>&#123;% extends ... %&#125;</code></td>
+          <td>Використати спільний каркас сторінки.</td>
+        </tr>
+        <tr>
+          <td><code>&#123;% include ... %&#125;</code></td>
+          <td>Підключити повторюваний шматок шаблону.</td>
+        </tr>
+      </tbody>
+    </table>
+  </article>
+</section>
+{% endblock %}

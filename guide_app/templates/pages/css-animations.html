@@ -1,0 +1,283 @@
+﻿{% extends "base.html" %}
+{% set header_class = "subpage-header" %}
+{% set eyebrow %}Шпаргалка 6{% endset %}
+{% set page_title %}CSS: анімації{% endset %}
+{% set lead %}Короткий довідник по <code>transition</code>, <code>transform</code>, <code>@keyframes</code> і основних властивостях анімації.{% endset %}
+
+{% block title %}CSS: анімації{% endblock %}
+
+{% block content %}
+{% raw %}
+<section class="cheat-sheet single-column wide-sheet">
+      <article class="cheat-card topic-nav">
+        <h2>Зміст</h2>
+        <div class="topic-links">
+          <a href="#transition">transition</a>
+          <a href="#transform">transform</a>
+          <a href="#keyframes">@keyframes</a>
+          <a href="#animation">animation</a>
+          <a href="#animation-parts">Параметри animation</a>
+          <a href="#what-to-animate">Що можна анімувати</a>
+          <a href="#timing">Час і повторення</a>
+          <a href="#tip">Коли що використовувати</a>
+          <a href="#demo-link">Демо</a>
+        </div>
+      </article>
+
+      <article class="cheat-card" id="transition">
+        <h2><code>transition</code></h2>
+        <p>Плавно змінює стиль елемента, коли його стан змінюється, наприклад при наведенні.</p>
+        <div class="code-block">
+          <pre><code>.button {
+  transition: 0.3s;
+}
+
+.button:hover {
+  background: darkblue;
+}</code></pre>
+        </div>
+      </article>
+
+      <article class="cheat-card" id="transform">
+        <h2><code>transform</code></h2>
+        <p>Дозволяє рухати, обертати, збільшувати або нахиляти елемент.</p>
+        <div class="code-block">
+          <pre><code>.card:hover {
+  transform: translateY(-8px);
+}
+
+.logo {
+  transform: rotate(10deg);
+}</code></pre>
+        </div>
+      </article>
+
+      <article class="cheat-card" id="keyframes">
+        <h2><code>@keyframes</code></h2>
+        <p>Описує кроки анімації від початку до кінця.</p>
+        <div class="code-block">
+          <pre><code>@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}</code></pre>
+        </div>
+      </article>
+
+      <article class="cheat-card" id="animation">
+        <h2><code>animation</code></h2>
+        <p>Запускає анімацію, яку описано в <code>@keyframes</code>.</p>
+        <div class="code-block">
+          <pre><code>.ball {
+  animation: pulse 2s infinite;
+}</code></pre>
+        </div>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Частина</th>
+              <th>Що означає</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>pulse</code></td>
+              <td>Назва анімації.</td>
+            </tr>
+            <tr>
+              <td><code>2s</code></td>
+              <td>Тривалість.</td>
+            </tr>
+            <tr>
+              <td><code>infinite</code></td>
+              <td>Повторювати без кінця.</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="cheat-card" id="animation-parts">
+        <h2>Параметри <code>animation</code></h2>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Параметр</th>
+              <th>Для чого</th>
+              <th>Приклад</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>animation-name</code></td>
+              <td>Назва анімації з <code>@keyframes</code>.</td>
+              <td><code>animation-name: pulse;</code></td>
+            </tr>
+            <tr>
+              <td><code>animation-duration</code></td>
+              <td>Скільки триває одна анімація.</td>
+              <td><code>animation-duration: 2s;</code></td>
+            </tr>
+            <tr>
+              <td><code>animation-delay</code></td>
+              <td>Затримка перед стартом.</td>
+              <td><code>animation-delay: 1s;</code></td>
+            </tr>
+            <tr>
+              <td><code>animation-iteration-count</code></td>
+              <td>Скільки разів повторювати.</td>
+              <td><code>animation-iteration-count: infinite;</code></td>
+            </tr>
+            <tr>
+              <td><code>animation-direction</code></td>
+              <td>Напрямок анімації.</td>
+              <td><code>animation-direction: alternate;</code></td>
+            </tr>
+            <tr>
+              <td><code>animation-timing-function</code></td>
+              <td>Швидкість руху під час анімації.</td>
+              <td><code>animation-timing-function: ease;</code></td>
+            </tr>
+            <tr>
+              <td><code>animation-fill-mode</code></td>
+              <td>Який стан лишити до або після анімації.</td>
+              <td><code>animation-fill-mode: forwards;</code></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="code-block">
+          <pre><code>.box {
+  animation-name: pulse;
+  animation-duration: 2s;
+  animation-delay: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+}</code></pre>
+        </div>
+      </article>
+
+      <article class="cheat-card" id="what-to-animate">
+        <h2>Що можна анімувати</h2>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Властивість</th>
+              <th>Що змінюється</th>
+              <th>Приклад</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>transform: translate(...)</code></td>
+              <td>Рух елемента</td>
+              <td><code>transform: translateY(-10px);</code></td>
+            </tr>
+            <tr>
+              <td><code>transform: scale(...)</code></td>
+              <td>Збільшення або зменшення</td>
+              <td><code>transform: scale(1.1);</code></td>
+            </tr>
+            <tr>
+              <td><code>transform: rotate(...)</code></td>
+              <td>Обертання</td>
+              <td><code>transform: rotate(15deg);</code></td>
+            </tr>
+            <tr>
+              <td><code>opacity</code></td>
+              <td>Прозорість</td>
+              <td><code>opacity: 0.5;</code></td>
+            </tr>
+            <tr>
+              <td><code>background-color</code></td>
+              <td>Колір фону</td>
+              <td><code>background-color: orange;</code></td>
+            </tr>
+            <tr>
+              <td><code>color</code></td>
+              <td>Колір тексту</td>
+              <td><code>color: darkblue;</code></td>
+            </tr>
+            <tr>
+              <td><code>width</code>, <code>height</code></td>
+              <td>Розмір елемента</td>
+              <td><code>width: 220px;</code></td>
+            </tr>
+            <tr>
+              <td><code>border-radius</code></td>
+              <td>Форма кутів</td>
+              <td><code>border-radius: 50%;</code></td>
+            </tr>
+            <tr>
+              <td><code>box-shadow</code></td>
+              <td>Тінь</td>
+              <td><code>box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);</code></td>
+            </tr>
+            <tr>
+              <td><code>letter-spacing</code></td>
+              <td>Відстань між літерами</td>
+              <td><code>letter-spacing: 0.1em;</code></td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          Найчастіше для плавних і красивих ефектів використовують
+          <code>transform</code> та <code>opacity</code>.
+        </p>
+      </article>
+
+      <article class="cheat-card" id="timing">
+        <h2>Час і повторення</h2>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Властивість</th>
+              <th>Приклад</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Тривалість</td>
+              <td><code>animation-duration: 2s;</code></td>
+            </tr>
+            <tr>
+              <td>Затримка</td>
+              <td><code>animation-delay: 1s;</code></td>
+            </tr>
+            <tr>
+              <td>Кількість повторів</td>
+              <td><code>animation-iteration-count: infinite;</code></td>
+            </tr>
+            <tr>
+              <td>Швидкість</td>
+              <td><code>animation-timing-function: ease;</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="cheat-card note-card" id="tip">
+        <h2>Коли що використовувати</h2>
+        <ul class="tip-list">
+          <li><code>transition</code> для простих ефектів при наведенні або натисканні.</li>
+          <li><code>transform</code> для руху, повороту, масштабу.</li>
+          <li><code>@keyframes</code> + <code>animation</code> для складніших повторюваних анімацій.</li>
+        </ul>
+      </article>
+
+      <article class="cheat-card" id="demo-link">
+        <p class="section-label">Демонстрація</p>
+        <h2>Побачити це в дії</h2>
+        <p>Окрема сторінка показує hover-ефекти, пульсацію, рух і обертання.</p>
+        <a class="button" href="css-animations-demo.html">Відкрити демо анімацій</a>
+      </article>
+    </section>
+{% endraw %}
+{% endblock %}

@@ -1,0 +1,88 @@
+﻿{% extends "base.html" %}
+{% set header_class = "subpage-header" %}
+{% set eyebrow %}Демо{% endset %}
+{% set page_title %}Демонстрація властивості <code>position</code>{% endset %}
+{% set lead %}Прокрути сторінку і подивись, як поводяться <code>sticky</code> і <code>fixed</code>, а також як <code>absolute</code> працює всередині блоку.{% endset %}
+
+{% block title %}Демо: CSS position{% endblock %}
+
+{% block content %}
+{% raw %}
+<section class="cheat-sheet single-column wide-sheet">
+      <article class="cheat-card">
+        <p class="section-label">Посилання назад</p>
+        <h2>Спочатку довідник, потім демонстрація</h2>
+        <p>Якщо треба швидко згадати значення властивості, повернись до шпаргалки.</p>
+        <a class="button" href="css-position.html">Відкрити довідник по position</a>
+      </article>
+
+      <article class="cheat-card">
+        <p class="section-label">Relative + Absolute</p>
+        <h2>Бейдж усередині картки</h2>
+        <div class="position-demo-card">
+          <div class="position-demo-badge">absolute</div>
+          <h3>Картка з бейджем</h3>
+          <p>Картка має <code>position: relative</code>, а бейдж усередині неї має <code>position: absolute</code>.</p>
+        </div>
+        <div class="code-block">
+          <pre><code>.card {
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}</code></pre>
+        </div>
+      </article>
+
+      <article class="cheat-card">
+        <p class="section-label">Sticky</p>
+        <h2>Блок, який прилипає</h2>
+        <div class="position-demo-sticky-wrap">
+          <div class="position-demo-sticky">sticky</div>
+          <div class="position-demo-scroll">
+            <p>Прокрути цю сторінку нижче.</p>
+            <p>Цей маленький блок має <code>position: sticky</code> і <code>top: 12px</code>.</p>
+            <p>Поки він не дійшов до верхньої межі, він поводиться як звичайний елемент.</p>
+            <p>Після цього він прилипає.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="cheat-card">
+        <p class="section-label">Fixed</p>
+        <h2>Кнопка в куті екрана</h2>
+        <p>
+          У правому нижньому куті сторінки є маленька кнопка <strong>fixed</strong>.
+          Вона не рухається під час прокрутки, бо має <code>position: fixed</code>.
+        </p>
+        <div class="code-block">
+          <pre><code>.help-button {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}</code></pre>
+        </div>
+      </article>
+
+      <article class="cheat-card">
+        <p class="section-label">Тренування</p>
+        <h2>Що можна спробувати самому</h2>
+        <ul class="tip-list">
+          <li>Пересунути бейдж ближче до лівого краю.</li>
+          <li>Змінити <code>top</code> у sticky-блоку.</li>
+          <li>Переставити fixed-кнопку в лівий нижній кут.</li>
+          <li>Додати <code>z-index</code> і подивитися, як елементи перекриваються.</li>
+        </ul>
+      </article>
+
+      <article class="cheat-card position-demo-spacer">
+        <p class="section-label">Прокрутка</p>
+        <h2>Місце для перевірки sticky і fixed</h2>
+        <p>Цей великий блок потрібен тільки для того, щоб можна було прокрутити сторінку і побачити поведінку позиціонування.</p>
+      </article>
+    </section>
+{% endraw %}
+{% endblock %}

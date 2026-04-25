@@ -1,0 +1,201 @@
+﻿{% extends "base.html" %}
+{% set header_class = "subpage-header" %}
+{% set eyebrow %}Шпаргалка 4{% endset %}
+{% set page_title %}Flask: базовий мінімум{% endset %}
+{% set lead %}Короткий довідник: структура проєкту, маршрути, шаблони, <code>static</code> і <code>url_for()</code>.{% endset %}
+
+{% block title %}Flask-шпаргалка{% endblock %}
+
+{% block content %}
+{% raw %}
+<section class="cheat-sheet single-column wide-sheet">
+      <article class="cheat-card topic-nav">
+        <h2>Зміст</h2>
+        <div class="topic-links">
+          <a href="#project-structure">Структура проєкту</a>
+          <a href="#app-minimum">Мінімальний app.py</a>
+          <a href="#routes">Маршрути</a>
+          <a href="#returns">Що може повертати маршрут</a>
+          <a href="#templates">Як повернути сторінку</a>
+          <a href="#url-for">url_for()</a>
+          <a href="#full-example">Повний приклад</a>
+        </div>
+      </article>
+
+      <article class="cheat-card" id="project-structure">
+        <h2>Структура проєкту</h2>
+        <div class="code-block">
+          <pre><code>my_project/
+  app.py
+  templates/
+    index.html
+    about.html
+  static/
+    styles.css
+    images/
+      robot.png</code></pre>
+        </div>
+        <ul class="tip-list">
+          <li><code>app.py</code> містить Flask-код.</li>
+          <li><code>templates</code> містить HTML-сторінки.</li>
+          <li><code>static</code> містить CSS, картинки та інші ресурси.</li>
+        </ul>
+      </article>
+
+      <article class="cheat-card" id="app-minimum">
+        <h2>Мінімальний <code>app.py</code></h2>
+        <div class="code-block">
+          <pre><code>from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return render_template("index.html")
+
+if __name__ == "__main__":
+    app.run(debug=True)</code></pre>
+        </div>
+        <p>Запуск: <code>python app.py</code></p>
+      </article>
+
+      <article class="cheat-card" id="routes">
+        <h2>Маршрути</h2>
+        <p>Маршрут це адреса сторінки. Наприклад: <code>/</code>, <code>/about</code>, <code>/contacts</code>.</p>
+        <div class="code-block">
+          <pre><code>@app.route("/")
+def home():
+    return "Головна"
+
+@app.route("/about")
+def about():
+    return "Про нас"</code></pre>
+        </div>
+      </article>
+
+      <article class="cheat-card" id="returns">
+        <h2>Що може повертати маршрут</h2>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Що повертаємо</th>
+              <th>Приклад</th>
+              <th>Що побачить користувач</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Звичайний текст</td>
+              <td><code>return "Привіт!"</code></td>
+              <td>Текст у браузері.</td>
+            </tr>
+            <tr>
+              <td>HTML-рядок</td>
+              <td><code>return "&lt;h1&gt;Привіт!&lt;/h1&gt;"</code></td>
+              <td>HTML у браузері.</td>
+            </tr>
+            <tr>
+              <td>Шаблон</td>
+              <td><code>return render_template("index.html")</code></td>
+              <td>HTML-файл із папки <code>templates</code>.</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="cheat-card" id="templates">
+        <h2>Як повернути сторінку</h2>
+        <p>HTML-сторінки кладемо в папку <code>templates</code> і повертаємо через <code>render_template()</code>.</p>
+        <div class="code-block">
+          <pre><code>from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return render_template("index.html")
+
+@app.route("/about")
+def about():
+    return render_template("about.html")</code></pre>
+        </div>
+        <p>CSS і картинки треба класти в папку <code>static</code>.</p>
+      </article>
+
+      <article class="cheat-card" id="url-for">
+        <h2><code>url_for()</code></h2>
+        <p><code>url_for()</code> створює правильні посилання на сторінки і ресурси.</p>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Де використовується</th>
+              <th>Приклад</th>
+              <th>Що робить</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Посилання на маршрут</td>
+              <td><code>{{ url_for('about') }}</code></td>
+              <td>Посилання на сторінку <code>/about</code>.</td>
+            </tr>
+            <tr>
+              <td>Посилання на CSS</td>
+              <td><code>{{ url_for('static', filename='styles.css') }}</code></td>
+              <td>Посилання на файл зі стилями.</td>
+            </tr>
+            <tr>
+              <td>Посилання на картинку</td>
+              <td><code>{{ url_for('static', filename='images/robot.png') }}</code></td>
+              <td>Посилання на картинку.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="code-block">
+          <pre><code>&lt;link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"&gt;
+
+&lt;a href="{{ url_for('about') }}"&gt;Про нас&lt;/a&gt;
+
+&lt;img src="{{ url_for('static', filename='images/robot.png') }}" alt="Робот"&gt;</code></pre>
+        </div>
+      </article>
+
+      <article class="cheat-card" id="full-example">
+        <h2>Повний базовий приклад</h2>
+        <div class="code-block">
+          <pre><code>from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return render_template("index.html")
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+if __name__ == "__main__":
+    app.run(debug=True)</code></pre>
+        </div>
+        <div class="code-block">
+          <pre><code>&lt;!-- templates/index.html --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang="uk"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Головна&lt;/title&gt;
+  &lt;link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Ласкаво просимо!&lt;/h1&gt;
+  &lt;p&gt;Це головна сторінка.&lt;/p&gt;
+  &lt;a href="{{ url_for('about') }}"&gt;Про нас&lt;/a&gt;
+  &lt;img src="{{ url_for('static', filename='images/robot.png') }}" alt="Робот"&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+      </article>
+    </section>
+{% endraw %}
+{% endblock %}

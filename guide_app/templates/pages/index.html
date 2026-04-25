@@ -1,0 +1,100 @@
+﻿{% extends "base.html" %}
+{% set header_class = "hero" %}
+{% set eyebrow %}Веб-шпаргалки{% endset %}
+{% set page_title %}Як робити сайти?{% endset %}
+{% set lead %}Короткі шпаргалки з HTML і CSS в одному місці.{% endset %}
+
+{% block title %}Веб-шпаргалки до уроку{% endblock %}
+
+{% block content %}
+{% raw %}
+<section class="card-grid">
+      <article class="card accent-orange">
+        <h2>HTML</h2>
+        <p>Основні теги для заголовків, тексту, посилань, списків і зображень.</p>
+        <a class="button" href="html-tags.html">Відкрити шпаргалку</a>
+      </article>
+
+      <article class="card accent-blue">
+        <h2>CSS</h2>
+        <p>Прості селектори та базові властивості: колір, фон, розмір, відступи.</p>
+        <a class="button" href="css-selectors.html">Подивитися CSS</a>
+      </article>
+
+      <article class="card accent-orange">
+        <h2>Одиниці розміру</h2>
+        <p><code>px</code>, <code>%</code>, <code>em</code>, <code>rem</code>, <code>vw</code>, <code>vh</code> і коли їх використовувати.</p>
+        <a class="button" href="css-units.html">Відкрити шпаргалку</a>
+      </article>
+
+      <article class="card accent-blue">
+        <h2>Розміщення блоків</h2>
+        <p><code>flex</code>, <code>grid</code>, <code>margin: auto</code> і швидкі способи центрування.</p>
+        <a class="button" href="css-layout.html">Відкрити layout</a>
+      </article>
+
+      <article class="card accent-green">
+        <h2>Position</h2>
+        <p><code>relative</code>, <code>absolute</code>, <code>fixed</code>, <code>sticky</code> і як вони працюють.</p>
+        <a class="button" href="css-position.html">Відкрити position</a>
+      </article>
+
+      <article class="card accent-orange">
+        <h2>Анімації</h2>
+        <p><code>transition</code>, <code>transform</code>, <code>@keyframes</code> і прості ефекти руху.</p>
+        <a class="button" href="css-animations.html">Відкрити анімації</a>
+      </article>
+
+      <article class="card accent-green">
+        <h2>Як підключити CSS</h2>
+        <p>Короткий шаблон для підключення стилів до HTML-сторінки.</p>
+        <a class="button" href="connect-css.html">Перейти до прикладу</a>
+      </article>
+
+      <article class="card accent-blue">
+        <h2>Flask</h2>
+        <p>Створення застосунку, запуск сервера, маршрути і перші веб-сторінки.</p>
+        <a class="button" href="flask-basics.html">Відкрити Flask</a>
+      </article>
+
+      <article class="card accent-green">
+        <h2>Форми у Flask</h2>
+        <p>Як отримати дані з форми і обробити їх на сервері через <code>request</code>.</p>
+        <a class="button" href="flask-forms.html">Відкрити форми</a>
+      </article>
+
+      <article class="card accent-orange">
+        <h2>Шаблони Jinja</h2>
+        <p>Підстановка значень, умови, цикли, <code>extends</code> і <code>include</code> у Flask.</p>
+        <a class="button" href="jinja-templates.html">Відкрити шаблони</a>
+      </article>
+    </section>
+
+    <section class="showcase">
+      <div>
+        <p class="section-label">Що є на сайті</p>
+        <h2>Тут розміщені довідкові матеріали по вебу</h2>
+        <ul class="check-list">
+          <li>HTML-теги для тексту, посилань і блоків</li>
+          <li>CSS для кольорів, відступів і оформлення</li>
+          <li>Одиниці розміру для верстки</li>
+          <li>Розміщення блоків на сторінці</li>
+          <li>Позиціонування елементів через <code>position</code></li>
+          <li>CSS-анімації та ефекти</li>
+          <li>Flask для запуску сайту через Python</li>
+          <li>Форми і надсилання даних на сервер</li>
+          <li>Шаблони Jinja для динамічних сторінок</li>
+          <li>Посилання між сторінками</li>
+          <li>Приклад простої структури сайту</li>
+        </ul>
+      </div>
+
+      <aside class="mini-demo">
+        <p class="section-label">Міні-демо</p>
+        <h3>Сайт гуртка програмування</h3>
+        <p>Це приклад блоку, який виглядає вже “по-сайтовому”, але складається з дуже простого HTML.</p>
+        <a class="button button-dark" href="html-tags.html">Розібрати з чого він зроблений</a>
+      </aside>
+    </section>
+{% endraw %}
+{% endblock %}
